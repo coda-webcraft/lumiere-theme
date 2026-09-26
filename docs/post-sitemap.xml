@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/lumiere-theme/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/%e3%83%96%e3%83%ad%e3%82%b0/</loc>
+		<loc>/lumiere-theme/%e3%83%96%e3%83%ad%e3%82%b0/</loc>
 		<lastmod>2026-07-21T21:05:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/%ef%bc%93%e9%80%a3%e4%bc%91%e3%81%a7%e3%81%99%e3%81%ad/</loc>
+		<loc>/lumiere-theme/%ef%bc%93%e9%80%a3%e4%bc%91%e3%81%a7%e3%81%99%e3%81%ad/</loc>
 		<lastmod>2026-07-21T21:05:53+00:00</lastmod>
 	</url>
 </urlset>

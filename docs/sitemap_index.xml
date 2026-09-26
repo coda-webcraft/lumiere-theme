@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/lumiere-theme/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>/post-sitemap.xml</loc>
+		<loc>/lumiere-theme/post-sitemap.xml</loc>
 		<lastmod>2026-07-21T21:05:53+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/page-sitemap.xml</loc>
+		<loc>/lumiere-theme/page-sitemap.xml</loc>
 		<lastmod>2026-07-23T20:59:11+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/menu_item-sitemap.xml</loc>
+		<loc>/lumiere-theme/menu_item-sitemap.xml</loc>
 		<lastmod>2026-07-24T22:53:50+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/testimonial-sitemap.xml</loc>
+		<loc>/lumiere-theme/testimonial-sitemap.xml</loc>
 		<lastmod>2026-07-20T20:49:29+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/category-sitemap.xml</loc>
+		<loc>/lumiere-theme/category-sitemap.xml</loc>
 		<lastmod>2026-07-21T21:05:53+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/menu_category-sitemap.xml</loc>
+		<loc>/lumiere-theme/menu_category-sitemap.xml</loc>
 		<lastmod>2026-07-24T22:53:50+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/author-sitemap.xml</loc>
+		<loc>/lumiere-theme/author-sitemap.xml</loc>
 		<lastmod>2026-09-26T21:51:51+00:00</lastmod>
 	</sitemap>
 </sitemapindex>

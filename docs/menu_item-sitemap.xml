@@ -1,42 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/lumiere-theme/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/menu/</loc>
+		<loc>/lumiere-theme/menu/</loc>
 		<lastmod>2026-07-24T22:53:50+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/menu/cafelatte/</loc>
+		<loc>/lumiere-theme/menu/cafelatte/</loc>
 		<lastmod>2026-07-21T21:03:06+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/menu-lateart.jpg</image:loc>
+			<image:loc>/lumiere-theme/wp-content/uploads/2026/07/menu-lateart.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/menu/coffe/</loc>
+		<loc>/lumiere-theme/menu/coffe/</loc>
 		<lastmod>2026-07-24T22:30:10+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/menu-coffeecup.jpg</image:loc>
+			<image:loc>/lumiere-theme/wp-content/uploads/2026/07/menu-coffeecup.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/menu/cheesecake/</loc>
+		<loc>/lumiere-theme/menu/cheesecake/</loc>
 		<lastmod>2026-07-24T22:30:25+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/menu-cheesecake.jpg</image:loc>
+			<image:loc>/lumiere-theme/wp-content/uploads/2026/07/menu-cheesecake.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/menu/croissant/</loc>
+		<loc>/lumiere-theme/menu/croissant/</loc>
 		<lastmod>2026-07-24T22:30:43+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/menu-croissant.jpg</image:loc>
+			<image:loc>/lumiere-theme/wp-content/uploads/2026/07/menu-croissant.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/menu/ice/</loc>
+		<loc>/lumiere-theme/menu/ice/</loc>
 		<lastmod>2026-07-24T22:53:50+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/strawberry-crumble-bingsu-scaled.jpg</image:loc>
+			<image:loc>/lumiere-theme/wp-content/uploads/2026/07/strawberry-crumble-bingsu-scaled.jpg</image:loc>
 		</image:image>
 	</url>
 </urlset>
