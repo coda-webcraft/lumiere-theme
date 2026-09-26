@@ -33,7 +33,7 @@ https://coda-webcraft.github.io/lumiere-theme/
 
 ## ディレクトリ構成
 
-\`\`\`
+```
 lumiere-theme/
 ├── docs/                     # GitHub Pages公開用(静的サイト)
 ├── inc/
@@ -56,7 +56,7 @@ lumiere-theme/
 ├── style.css
 ├── taxonomy-menu_category.php # メニューカテゴリー別一覧
 └── README.md
-\`\`\`
+```
 
 ## 今後の展望
 - SCSS導入によるスタイル管理の効率化
