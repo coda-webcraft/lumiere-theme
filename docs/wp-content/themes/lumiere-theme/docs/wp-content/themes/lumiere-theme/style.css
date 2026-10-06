@@ -227,6 +227,8 @@ body {
   align-items: center;
   gap: 80px;
   padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-photo {
@@ -236,6 +238,15 @@ body {
   background-position: center;
   background-color: var(--color-border);
   flex-shrink: 0;
+}
+
+.about-label {
+  display: block;
+  font-family: "Lora", serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-text);
+  margin-bottom: 12px;
 }
 
 .about-text h2 {
@@ -252,7 +263,9 @@ body {
 }
 
 .testimonials {
-  padding: 80px 0;
+  padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .testimonials-heading {
@@ -325,6 +338,9 @@ body {
   flex-shrink: 0;
 }
 
+.faq-section {
+  background-color: #f7f5f2;
+}
 .faq {
   padding: 80px 60px;
   max-width: 800px;
@@ -379,9 +395,9 @@ body {
   text-align: center;
 }
 
-.contact h2 {
+.contact h1 {
   font-family: "Lora", serif;
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 16px;
 }
 
@@ -602,9 +618,51 @@ body {
   border: 1px solid var(--color-primary);
 }
 
+.lumiere-calendar-noscript {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+/* トップページ「お知らせ」セクション(最新ブログ記事 + 営業カレンダー) */
+.notice {
+  padding: 80px 60px;
+  background-color: #f7f5f2;
+}
+
+.notice-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.notice-heading {
+  font-family: "Lora", serif;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.notice-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.notice-blog,
+.notice-calendar {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-subheading {
+  font-family: "Lora", serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
 .menu-more {
   text-align: center;
-  padding-bottom: 60px;
+  padding: 0 60px 60px;
   background-color: #f7f5f2;
 }
 
@@ -615,9 +673,12 @@ body {
 }
 
 .breadcrumbs {
+  max-width: 600px;
+  margin: 0 auto;
   font-size: 13px;
   color: var(--color-text-sub);
   padding: 24px 0 0;
+  text-align: left;
 }
 
 .breadcrumbs a {
@@ -985,8 +1046,21 @@ body {
     padding: 60px 24px;
   }
 
-  .contact h2 {
+  .contact h1 {
     font-size: 24px;
+  }
+
+  .notice {
+    padding: 60px 24px;
+  }
+
+  .notice-columns {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .menu-more {
+    padding: 0 24px 60px;
   }
 
   .page-layout {
