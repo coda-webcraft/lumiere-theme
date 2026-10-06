@@ -48,9 +48,10 @@ $faq_query = new WP_Query(array(
   'order' => 'ASC',
 ));
 
-$contact_heading = get_field('contact_heading');
-$contact_text = get_field('contact_text');
-$contact_shortcode = get_field('contact_form_shortcode');
+$notice_posts = new WP_Query(array(
+  'posts_per_page' => 3,
+  'post_status' => 'publish',
+));
 ?>
 
 <section class="hero" <?php echo $hero_bg ? ' style="background-image:url(\'' . esc_url($hero_bg['url']) . '\');"' : ''; ?>>
@@ -58,7 +59,7 @@ $contact_shortcode = get_field('contact_form_shortcode');
   <p><?php echo esc_html($hero_sub); ?></p>
   <?php if ($hero_btn_txt): ?>
     <a class="btn"
-      href="<?php echo esc_url($hero_btn_url ? $hero_btn_url : '#contact'); ?>"><?php echo esc_html($hero_btn_txt); ?></a>
+      href="<?php echo esc_url($hero_btn_url ? $hero_btn_url : lumiere_get_contact_page_url()); ?>"><?php echo esc_html($hero_btn_txt); ?></a>
   <?php endif; ?>
 </section>
 
@@ -72,126 +73,142 @@ $contact_shortcode = get_field('contact_form_shortcode');
   <?php endforeach; ?>
 </section>
 
-<div class="page-layout">
-  <main class="page-main">
-
-    <section class="menu" id="menu">
-      <h2 class="menu-heading">Menu</h2>
-      <div class="menu-preview">
-        <?php if ($menu_query->have_posts()): ?>
-          <?php while ($menu_query->have_posts()):
-            $menu_query->the_post(); ?>
-            <div class="menu-card">
-              <div class="menu-photo" <?php echo has_post_thumbnail() ? ' style="background-image:url(\'' . esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')) . '\');"' : ''; ?>>
-                <?php if (get_field('is_recommended')): ?>
-                  <span class="menu-recommend-badge">おすすめ</span>
-                <?php endif; ?>
-              </div>
-              <h3><?php the_title(); ?></h3>
-              <p class="price"><?php echo esc_html(get_field('menu_item_price')); ?></p>
-            </div>
-          <?php endwhile;
-          wp_reset_postdata(); ?>
-        <?php else: ?>
-          <p style="color:var(--color-text-sub);">メニュー項目がまだ登録されていません。</p>
-        <?php endif; ?>
-      </div>
-    </section>
-
-    <div class="menu-more">
-      <a class="btn btn-outline"
-        href="<?php echo esc_url(get_post_type_archive_link('menu_item')); ?>">メニューをすべて見る</a>
-    </div>
-
-    <section class="about" id="about">
-      <div class="about-photo" <?php echo $about_image ? ' style="background-image:url(\'' . esc_url($about_image['url']) . '\');"' : ''; ?>></div>
-      <div class="about-text">
-        <h2><?php echo esc_html($about_heading); ?></h2>
-        <p><?php echo nl2br(esc_html($about_text)); ?></p>
-      </div>
-    </section>
-
-    <section class="access" id="access">
-      <div class="access-text">
-        <h2>Access</h2>
-        <p>
-          住所:<?php echo esc_html($access_address); ?><br />
-          営業時間:<?php echo esc_html($access_hours); ?><br />
-          電話番号:<?php echo esc_html($access_phone); ?>
-        </p>
-      </div>
-      <div class="access-map">
-        <?php if ($access_map_url): ?>
-          <iframe src="<?php echo esc_url($access_map_url); ?>" width="100%" height="100%" style="border: 0"
-            allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        <?php endif; ?>
-      </div>
-    </section>
-
-    <?php if ($faq_query->have_posts()): ?>
-      <section class="faq" id="faq">
-        <h2 class="faq-heading">よくある質問</h2>
-        <div class="faq-list">
-          <?php while ($faq_query->have_posts()):
-            $faq_query->the_post(); ?>
-            <details class="faq-item">
-              <summary class="faq-question"><?php the_title(); ?></summary>
-              <div class="faq-answer"><?php echo nl2br(esc_html(get_field('faq_answer'))); ?></div>
-            </details>
-          <?php endwhile;
-          wp_reset_postdata(); ?>
+<section class="menu" id="menu">
+  <h2 class="menu-heading">Menu</h2>
+  <div class="menu-preview">
+    <?php if ($menu_query->have_posts()): ?>
+      <?php while ($menu_query->have_posts()):
+        $menu_query->the_post(); ?>
+        <div class="menu-card">
+          <div class="menu-photo" <?php echo has_post_thumbnail() ? ' style="background-image:url(\'' . esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')) . '\');"' : ''; ?>>
+            <?php if (get_field('is_recommended')): ?>
+              <span class="menu-recommend-badge">おすすめ</span>
+            <?php endif; ?>
+          </div>
+          <h3><?php the_title(); ?></h3>
+          <p class="price"><?php echo esc_html(get_field('menu_item_price')); ?></p>
         </div>
-      </section>
+      <?php endwhile;
+      wp_reset_postdata(); ?>
+    <?php else: ?>
+      <p style="color:var(--color-text-sub);">メニュー項目がまだ登録されていません。</p>
     <?php endif; ?>
+  </div>
+</section>
 
-    <section class="contact" id="contact">
-      <h2><?php echo esc_html($contact_heading); ?></h2>
-      <?php if ($contact_text): ?>
-        <p class="contact-lead"><?php echo esc_html($contact_text); ?></p>
-      <?php endif; ?>
-
-      <div class="contact-form">
-        <?php
-        if ($contact_shortcode) {
-          echo do_shortcode($contact_shortcode);
-        } else {
-          echo '<p style="color:var(--color-text-sub);">お問い合わせフォームのショートコードが設定されていません。</p>';
-        }
-        ?>
-      </div>
-    </section>
-
-    <?php if ($testimonial_query->have_posts()): ?>
-      <section class="testimonials" id="testimonials">
-        <h2 class="testimonials-heading">お客様の声</h2>
-        <div class="testimonials-grid">
-          <?php while ($testimonial_query->have_posts()):
-            $testimonial_query->the_post();
-            $rating = (int) get_field('testimonial_rating');
-            $rating = $rating ? $rating : 5;
-            ?>
-            <div class="testimonial-card">
-              <p class="testimonial-stars">
-                <?php echo esc_html(str_repeat('★', $rating) . str_repeat('☆', 5 - $rating)); ?></p>
-              <p class="testimonial-text">「<?php echo esc_html(get_field('testimonial_text')); ?>」</p>
-              <p class="testimonial-name">
-                <?php the_title(); ?>
-                <?php $attr = get_field('testimonial_attribute'); ?>
-                <?php if ($attr): ?>
-                  <span class="testimonial-attribute"><?php echo esc_html($attr); ?></span>
-                <?php endif; ?>
-              </p>
-            </div>
-          <?php endwhile;
-          wp_reset_postdata(); ?>
-        </div>
-      </section>
-    <?php endif; ?>
-
-  </main>
-
-  <?php get_sidebar(); ?>
-
+<div class="menu-more">
+  <a class="btn btn-outline"
+    href="<?php echo esc_url(get_post_type_archive_link('menu_item')); ?>">メニューをすべて見る</a>
 </div>
+
+<section class="about" id="about">
+  <div class="about-photo" <?php echo $about_image ? ' style="background-image:url(\'' . esc_url($about_image['url']) . '\');"' : ''; ?>></div>
+  <div class="about-text">
+    <span class="about-label">About</span>
+    <h2><?php echo esc_html($about_heading); ?></h2>
+    <p><?php echo nl2br(esc_html($about_text)); ?></p>
+  </div>
+</section>
+
+<section class="notice" id="notice">
+  <div class="notice-inner">
+    <h2 class="notice-heading">お知らせ</h2>
+    <div class="notice-columns">
+
+      <div class="notice-blog">
+        <h3 class="notice-subheading">Blog</h3>
+        <?php if ($notice_posts->have_posts()): ?>
+          <ul class="sidebar-post-list">
+            <?php while ($notice_posts->have_posts()):
+              $notice_posts->the_post(); ?>
+              <li class="sidebar-post-item">
+                <a href="<?php the_permalink(); ?>">
+                  <?php if (has_post_thumbnail()): ?>
+                    <span class="sidebar-post-thumb"><?php the_post_thumbnail('thumbnail'); ?></span>
+                  <?php endif; ?>
+                  <span class="sidebar-post-info">
+                    <span class="sidebar-post-date"><?php echo esc_html(get_the_date()); ?></span>
+                    <span class="sidebar-post-title"><?php the_title(); ?></span>
+                  </span>
+                </a>
+              </li>
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+          </ul>
+          <a class="sidebar-more-link" href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">ブログ記事一覧を見る</a>
+        <?php else: ?>
+          <p class="sidebar-empty">まだ記事がありません。</p>
+        <?php endif; ?>
+      </div>
+
+      <div class="notice-calendar">
+        <?php lumiere_render_calendar('notice-calendar', 'h3', 'notice-subheading'); ?>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="access-text">
+    <h2>Access</h2>
+    <p>
+      住所:<?php echo esc_html($access_address); ?><br />
+      営業時間:<?php echo esc_html($access_hours); ?><br />
+      電話番号:<?php echo esc_html($access_phone); ?>
+    </p>
+  </div>
+  <div class="access-map">
+    <?php if ($access_map_url): ?>
+      <iframe src="<?php echo esc_url($access_map_url); ?>" width="100%" height="100%" style="border: 0"
+        allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <?php endif; ?>
+  </div>
+</section>
+
+<?php if ($faq_query->have_posts()): ?>
+  <section class="faq-section" id="faq">
+    <div class="faq">
+      <h2 class="faq-heading">よくある質問</h2>
+      <div class="faq-list">
+        <?php while ($faq_query->have_posts()):
+          $faq_query->the_post(); ?>
+          <details class="faq-item">
+            <summary class="faq-question"><?php the_title(); ?></summary>
+            <div class="faq-answer"><?php echo nl2br(esc_html(get_field('faq_answer'))); ?></div>
+          </details>
+        <?php endwhile;
+        wp_reset_postdata(); ?>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>
+
+<?php if ($testimonial_query->have_posts()): ?>
+  <section class="testimonials" id="testimonials">
+    <h2 class="testimonials-heading">お客様の声</h2>
+    <div class="testimonials-grid">
+      <?php while ($testimonial_query->have_posts()):
+        $testimonial_query->the_post();
+        $rating = (int) get_field('testimonial_rating');
+        $rating = $rating ? $rating : 5;
+        ?>
+        <div class="testimonial-card">
+          <p class="testimonial-stars">
+            <?php echo esc_html(str_repeat('★', $rating) . str_repeat('☆', 5 - $rating)); ?></p>
+          <p class="testimonial-text">「<?php echo esc_html(get_field('testimonial_text')); ?>」</p>
+          <p class="testimonial-name">
+            <?php the_title(); ?>
+            <?php $attr = get_field('testimonial_attribute'); ?>
+            <?php if ($attr): ?>
+              <span class="testimonial-attribute"><?php echo esc_html($attr); ?></span>
+            <?php endif; ?>
+          </p>
+        </div>
+      <?php endwhile;
+      wp_reset_postdata(); ?>
+    </div>
+  </section>
+<?php endif; ?>
 
 <?php get_footer(); ?>

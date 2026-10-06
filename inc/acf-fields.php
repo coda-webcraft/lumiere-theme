@@ -59,7 +59,7 @@ add_action('acf/init', function () {
                 'label' => 'ボタンリンク先',
                 'name' => 'hero_button_link',
                 'type' => 'text',
-                'default_value' => '#contact',
+                'instructions' => '空欄の場合は、自動的に「お問い合わせページ」のURLが設定されます。',
             ),
 
             // --- こだわり(features) ---
@@ -111,33 +111,9 @@ add_action('acf/init', function () {
             ),
 
             // --- Contact ---
-            array(
-                'key' => 'field_lumiere_contact_tab',
-                'label' => 'お問い合わせ(Contact)',
-                'type' => 'tab',
-            ),
-            array(
-                'key' => 'field_lumiere_contact_heading',
-                'label' => '見出し',
-                'name' => 'contact_heading',
-                'type' => 'text',
-                'default_value' => 'Contact',
-            ),
-            array(
-                'key' => 'field_lumiere_contact_text',
-                'label' => '説明文',
-                'name' => 'contact_text',
-                'type' => 'textarea',
-                'rows' => 2,
-                'default_value' => 'ご予約・お問い合わせは、以下のフォームよりお気軽にご連絡ください。',
-            ),
-            array(
-                'key' => 'field_lumiere_contact_shortcode',
-                'label' => 'お問い合わせフォーム ショートコード',
-                'name' => 'contact_form_shortcode',
-                'type' => 'text',
-                'instructions' => 'Contact Form 7の編集画面上部に表示されているショートコード(例: [contact-form-7 id="xxxx" title="コンタクトフォーム1"])を、そのまま貼り付けてください。',
-            ),
+            // お問い合わせの見出し・本文・フォームは、独立した「お問い合わせページ」
+            // (page-contact.phpテンプレート)専用のフィールドグループに移動しました。
+            // 下の group_lumiere_contact_page を参照してください。
 
             // --- Footer ---
             array(
@@ -308,6 +284,52 @@ add_action('acf/init', function () {
         'position' => 'normal',
         'style' => 'default',
         'active' => true,
+    ));
+
+    // お問い合わせページ(page-contact.phpテンプレートを指定した固定ページ)専用フィールド
+    acf_add_local_field_group(array(
+        'key' => 'group_lumiere_contact_page',
+        'title' => 'お問い合わせページ コンテンツ',
+        'fields' => array(
+            array(
+                'key' => 'field_lumiere_contact_heading',
+                'label' => '見出し',
+                'name' => 'contact_heading',
+                'type' => 'text',
+                'default_value' => 'Contact',
+            ),
+            array(
+                'key' => 'field_lumiere_contact_text',
+                'label' => '説明文',
+                'name' => 'contact_text',
+                'type' => 'textarea',
+                'rows' => 2,
+                'default_value' => 'ご予約・お問い合わせは、以下のフォームよりお気軽にご連絡ください。',
+            ),
+            array(
+                'key' => 'field_lumiere_contact_shortcode',
+                'label' => 'お問い合わせフォーム ショートコード',
+                'name' => 'contact_form_shortcode',
+                'type' => 'text',
+                'instructions' => 'Contact Form 7の編集画面上部に表示されているショートコード(例: [contact-form-7 id="xxxx" title="コンタクトフォーム1"])を、そのまま貼り付けてください。',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-contact.php',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => true,
+        'description' => '「お問い合わせページ」テンプレートを指定した固定ページの編集画面にのみ表示されます。',
     ));
 
 });
